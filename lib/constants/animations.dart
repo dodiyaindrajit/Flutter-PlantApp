@@ -1,0 +1,1 @@
+const String kNotificationBell = "assets/lotties/notification_bell1.json";
