@@ -21,6 +21,7 @@ dependencies:
   #Image-Slider / Image Providers
   carousel_slider: ^4.0.0
   flutter_svg: ^1.0.3
+  flutter_custom_tab_bar: ^1.1.9
 
   # Animation Packages
   animated_widgets: ^1.1.0
@@ -47,7 +48,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/applogo.png"
+  image_path: "assets/images/logo.png"
 
 flutter:
   assets:

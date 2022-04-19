@@ -8,5 +8,5 @@ const Color kGreenColor = Color(0xFF9CE5CB);
 const Color kDarkGreenColor = Color(0xFF0D986A);
 const Color kPinkColor = Color(0xFFFDC7BE);
 const Color kYellowColor = Color(0xFFFFF1C2);
-const Color kSkyBlueColor = Color(0xFFB7EDF9);
+const Color kBackGroundColor = Color(0xFFF6F1ED);
 

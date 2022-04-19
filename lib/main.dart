@@ -1,12 +1,11 @@
-import 'dart:typed_data';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:platapp_flutter/constants/colors.dart';
-import 'package:platapp_flutter/screen/home.dart';
+import 'package:platapp_flutter/screen/home/home.dart';
+import 'package:platapp_flutter/screen/splash.dart';
 
 List<CameraDescription> cameras = [];
 
@@ -24,13 +23,14 @@ Future<void> main() async {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: kSkyBlueColor,
+              primary: kBackGroundColor,
               secondary: kBlackColor,
             ),
             fontFamily: 'Philosopher'
           ),
           routes: {
-            "/": (context) => MyApp(),
+            "/": (context) => const SplashScreen(),
+            "/home" : (context) => HomePage(),
           },
       )
   );
@@ -103,6 +103,7 @@ class _MyAppState extends State<MyApp> {
       ),
       navBarStyle: NavBarStyle.style3,
       onItemSelected: (index){},
+      backgroundColor: kBackGroundColor,
     );
   }
 }
