@@ -9,11 +9,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tab_bar/library.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:platapp_flutter/constants/animations.dart';
 import 'package:platapp_flutter/constants/colors.dart';
 import 'package:platapp_flutter/constants/images.dart';
+import 'package:platapp_flutter/screen/info/plant_info.dart';
 import 'package:platapp_flutter/widgets/search_bar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,12 +42,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "Aloe Vera"
   ];
   final List<Color> plantBackColor = <Color>[
-    Color(0xFFF9CE5CB),
-    Color(0xFFFFF1C2),
-    Color(0xFF56D1A7),
-    Color(0xFFB2E28D),
-    Color(0xFFDEEC8A),
-    Color(0xFFF5EDA8)
+    const Color(0xFFF9CE5CB),
+    const Color(0xFFFFF1C2),
+    const Color(0xFF56D1A7),
+    const Color(0xFFB2E28D),
+    const Color(0xFFDEEC8A),
+    const Color(0xFFF5EDA8)
   ];
 
   @override
@@ -247,17 +250,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: PageView.builder(
                     controller: _controller,
                     itemCount: pageCount,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (context, pageIndex) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             // height: 20.w,
                             child: ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: 6,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return plantCard(index);
+                                  return plantCard(index, pageIndex);
                                 }),
                           )
                         ],
@@ -269,7 +272,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Stack plantCard(int index) {
+  Stack plantCard(int index, int pageIndex) {
+    print("plant_"+pageIndex.toString()+index.toString());
     return Stack(
       children: [
         Padding(
@@ -281,17 +285,35 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             fit: BoxFit.fitWidth,
           ),
         ),
-        Align(
-            alignment: const Alignment(1.2, 0),
-            child: Image.asset("assets/images/plant${index+1}.png",
-              width: 40.w,
-            )),
+        Hero(
+          tag: "plant_"+pageIndex.toString()+index.toString(),
+          child: Align(
+              alignment: const Alignment(1.1, 0),
+              child: SimpleShadow(
+                color: kBlackColor,
+                opacity: 0.6,
+                sigma: 5,
+                offset: const Offset(-5, 5),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: (){
+                      pushNewScreen(context,
+                        screen: PlantInfo(name: plantName[index],imageName: "assets/images/plant${index+1}.png",index: "plant_$pageIndex$index",price: "${index+1}00", backGroundColor: plantBackColor[index],));
+                    },
+                    child: Image.asset("assets/images/plant${index+1}.png", width: 40.w),
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                  ),
+                ),
+              )),
+        ),
         Padding(
           padding: EdgeInsets.only(top: 9.h, left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text("Air Purifier", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp)),
+              Text("$pageIndex$index Air Purifier", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp)),
               Text(plantName[index],
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.sp)),
               SizedBox(
@@ -321,12 +343,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         height: 23.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Text("Plant a Life",
+          children: <Widget>[
+            Container(color: kBlackColor, width: 70, height: 5),
+            const SizedBox(height: 10),
+            const Text("Plant a Life",
                 style: TextStyle(
                     color: Color(0xFF002140), fontSize: 36, fontWeight: ui.FontWeight.bold)),
-            Text("Live amongst Living", style: TextStyle(color: Color(0xFF002140), fontSize: 32)),
-            Text("Spread the joy", style: TextStyle(color: Color(0xFF002141), fontSize: 31)),
+            const Text("Live amongst Living",
+                style: TextStyle(color: Color(0xFF002140), fontSize: 32)),
+            const Text("Spread the joy", style: TextStyle(color: Color(0xFF002141), fontSize: 31)),
           ],
         ),
       ),

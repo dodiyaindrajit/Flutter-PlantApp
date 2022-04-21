@@ -12,15 +12,20 @@ import 'package:platapp_flutter/main.dart';
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
+  static bool isNotNavigate = true;
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3), () {
-      pushNewScreen(
-        context,
-        screen: MyApp(),
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-      );
-    });
+    if (isNotNavigate) {
+      isNotNavigate = false;
+      Future.delayed(const Duration(seconds: 3), () {
+        pushNewScreen(
+          context,
+          screen: MyApp(),
+          pageTransitionAnimation: PageTransitionAnimation.cupertino,
+        );
+      });
+    }
     return Scaffold(
       body: Container(
         color: kBackGroundColor,
@@ -29,7 +34,7 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Lottie.asset(kSplash,),
+              Lottie.asset(kSplash),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

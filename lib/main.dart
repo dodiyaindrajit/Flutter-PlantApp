@@ -62,9 +62,9 @@ class _MyAppState extends State<MyApp> {
     List<Widget> _buildScreens() {
       return [
         const HomePage(),
-        const HomePage(),
-        const HomePage(),
-        const HomePage()
+        SplashScreen(),
+        SplashScreen(),
+        SplashScreen()
       ];
     }
 
