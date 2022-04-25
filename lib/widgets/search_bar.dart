@@ -27,7 +27,7 @@ class _SearchBarState extends State<SearchBar> with WidgetsBindingObserver {
               contentPadding: EdgeInsets.symmetric(vertical: 10),),
           ),
           child: Container(
-              color: kBackGroundColor,
+              color: ColorConstant.kBackGroundColor,
               height: 70,
               padding: const EdgeInsets.symmetric(horizontal:15),
               child: Row(
@@ -36,7 +36,7 @@ class _SearchBarState extends State<SearchBar> with WidgetsBindingObserver {
                   SizedBox(
                     width: 75.w,
                     child: TextField(
-                      cursorColor: kBlackColor,
+                      cursorColor: ColorConstant.kBlackColor,
                       decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -45,17 +45,17 @@ class _SearchBarState extends State<SearchBar> with WidgetsBindingObserver {
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
                         labelText: 'Search',
-                        labelStyle: const TextStyle(color: kBlackColor),
-                        prefixIcon: const Icon(
+                        labelStyle: TextStyle(color: ColorConstant.kBlackColor),
+                        prefixIcon: Icon(
                           Icons.search,
-                          color: kBlackColor,
+                          color: ColorConstant.kBlackColor,
                         ),
                         suffixIcon: Transform.rotate(
                           angle: 180 * math.pi / 80,
                           child: IconButton(
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.api_rounded,
-                              color: kBlackColor,
+                              color: ColorConstant.kBlackColor,
                             ),
                             iconSize: 30,
                             onPressed: (){

@@ -23,8 +23,8 @@ Future<void> main() async {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: kBackGroundColor,
-              secondary: kBlackColor,
+              primary: ColorConstant.kBackGroundColor,
+              secondary: ColorConstant.kBlackColor,
             ),
             fontFamily: 'Philosopher'
           ),
@@ -71,10 +71,10 @@ class _MyAppState extends State<MyApp> {
     List<PersistentBottomNavBarItem> _navBarsItems() {
       return [
       for ( var i in text) PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:kDarkGreenColor),
-          activeColorPrimary: kDarkGreenColor,
-          inactiveColorPrimary: kBlackColor,
-          inactiveIcon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:kBlackColor),
+          icon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:ColorConstant.kDarkGreenColor),
+          activeColorPrimary: ColorConstant.kDarkGreenColor,
+          inactiveColorPrimary: ColorConstant.kBlackColor,
+          inactiveIcon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:ColorConstant.kBlackColor),
         ),
       ];
     }
@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
       ),
       navBarStyle: NavBarStyle.style3,
       onItemSelected: (index){},
-      backgroundColor: kBackGroundColor,
+      backgroundColor: ColorConstant.kBackGroundColor,
     );
   }
 }

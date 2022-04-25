@@ -28,7 +28,7 @@ class SplashScreen extends StatelessWidget {
     }
     return Scaffold(
       body: Container(
-        color: kBackGroundColor,
+        color: ColorConstant.kBackGroundColor,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,16 +41,16 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 30, child: Image.asset(kLogo)),
                   const SizedBox(width: 10),
-                  const Text(
+                  Text(
                     'PLANTFY',
                     style: TextStyle(
-                      color: kBlackColor,
+                      color: ColorConstant.kBlackColor,
                       fontSize: 30,
                       shadows: <Shadow>[
                         Shadow(
-                          offset: Offset(0.2, 0.2),
+                          offset: const Offset(0.2, 0.2),
                           blurRadius: 10.0,
-                          color: kWhiteColor,
+                          color: ColorConstant.kWhiteColor,
                         ),
                       ],
                     ),

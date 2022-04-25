@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       return Scaffold(
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light.copyWith(
-            systemNavigationBarColor: kWhiteColor,
+            systemNavigationBarColor: ColorConstant.kWhiteColor,
           ),
           child: CustomScrollView(
             slivers: <Widget>[appBar(), const SearchBar(), imageSlider(), filterTabBar(), footer()],
@@ -104,15 +104,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               children: [
                 SizedBox(height: 20, child: Image.asset(kLogo)),
                 const SizedBox(width: 10),
-                const Text(
+                Text(
                   'PLANTFY',
                   style: TextStyle(
-                    color: kBlackColor,
+                    color: ColorConstant.kBlackColor,
                     shadows: <Shadow>[
                       Shadow(
-                        offset: Offset(0.2, 0.2),
+                        offset: const Offset(0.2, 0.2),
                         blurRadius: 10.0,
-                        color: kWhiteColor,
+                        color: ColorConstant.kWhiteColor,
                       ),
                     ],
                   ),
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             icon: AnimatedIcons.menu_home,
             progress: _drawerController,
             semanticLabel: 'Show menu',
-            color: kBlackColor,
+            color: ColorConstant.kBlackColor,
           ),
           onPressed: () {
             setState(() {
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   SliverToBoxAdapter imageSlider() {
     return SliverToBoxAdapter(
       child: Container(
-        color: kBackGroundColor,
+        color: ColorConstant.kBackGroundColor,
         padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
         child: Column(
           children: <Widget>[
@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        color: kBackGroundColor,
+        color: ColorConstant.kBackGroundColor,
         height: (6 * cardHeight) + 35,
         child: Column(
           children: [
@@ -226,8 +226,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     transform: ScaleTransform(
                         maxScale: 1.3,
                         transform: ColorsTransform(
-                            normalColor: kBlackColor,
-                            highlightColor: kDarkGreenColor,
+                            normalColor: ColorConstant.kBlackColor,
+                            highlightColor: ColorConstant.kDarkGreenColor,
                             builder: (context, color) {
                               return Container(
                                   padding: const EdgeInsets.all(5),
@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             })));
               },
               indicator: StandardIndicator(
-                  width: 30, height: 3, color: kDarkGreenColor, radius: BorderRadius.circular(1.5)),
+                  width: 30, height: 3, color: ColorConstant.kDarkGreenColor, radius: BorderRadius.circular(1.5)),
               pageController: _controller,
             ),
             Expanded(
@@ -290,7 +290,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: Align(
               alignment: const Alignment(1.1, 0),
               child: SimpleShadow(
-                color: kBlackColor,
+                color: ColorConstant.kBlackColor,
                 opacity: 0.6,
                 sigma: 5,
                 offset: const Offset(-5, 5),
@@ -339,12 +339,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        color: kBackGroundColor,
+        color: ColorConstant.kBackGroundColor,
         height: 23.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(color: kBlackColor, width: 70, height: 5),
+            Container(color: ColorConstant.kBlackColor, width: 70, height: 5),
             const SizedBox(height: 10),
             const Text("Plant a Life",
                 style: TextStyle(
