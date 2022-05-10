@@ -1,6 +1,6 @@
-# platapp_flutter
+# plant_flutter
 
-Platapp Is Made with ❤ in flutter at KarmaLn Techbology.
+Plantapp Is Made with ❤ in flutter at KarmaLn Techbology.
 
 ## Getting Started
 
