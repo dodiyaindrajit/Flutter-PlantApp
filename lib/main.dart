@@ -1,5 +1,4 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -7,10 +6,11 @@ import 'package:platapp_flutter/constants/colors.dart';
 import 'package:platapp_flutter/screen/home/home.dart';
 import 'package:platapp_flutter/screen/splash.dart';
 
+import 'screen/music/music_homes.dart';
+
 List<CameraDescription> cameras = [];
 
 Future<void> main() async {
-
   try {
     WidgetsFlutterBinding.ensureInitialized();
     cameras = await availableCameras();
@@ -18,22 +18,19 @@ Future<void> main() async {
     print('Error in fetching the cameras: $e');
   }
 
-  runApp(
-      MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: ColorConstant.kBackGroundColor,
-              secondary: ColorConstant.kBlackColor,
-            ),
-            fontFamily: 'Philosopher'
-          ),
-          routes: {
-            "/": (context) => const SplashScreen(),
-            "/home" : (context) => HomePage(),
-          },
-      )
-  );
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: ColorConstant.kBackGroundColor,
+          secondary: ColorConstant.kBlackColor,
+        ),
+        fontFamily: 'Philosopher'),
+    routes: {
+      "/": (context) => const SplashScreen(),
+      "/home": (context) => const HomePage(),
+    },
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -46,10 +43,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
-  PersistentTabController _controller =  PersistentTabController(initialIndex: 0);
-
-  List<int> text = [1,2,3,4];
+  List<int> text = [1, 2, 3, 4];
 
   @override
   void initState() {
@@ -58,24 +54,21 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
     List<Widget> _buildScreens() {
-      return [
-        const HomePage(),
-        SplashScreen(),
-        SplashScreen(),
-        SplashScreen()
-      ];
+      return [const HomePage(), const MusicHomes(), const SplashScreen(), const SplashScreen()];
     }
 
     List<PersistentBottomNavBarItem> _navBarsItems() {
       return [
-      for ( var i in text) PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:ColorConstant.kDarkGreenColor),
-          activeColorPrimary: ColorConstant.kDarkGreenColor,
-          inactiveColorPrimary: ColorConstant.kBlackColor,
-          inactiveIcon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",height: 55,color:ColorConstant.kBlackColor),
-        ),
+        for (var i in text)
+          PersistentBottomNavBarItem(
+            icon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",
+                height: 55, color: ColorConstant.kDarkGreenColor),
+            activeColorPrimary: ColorConstant.kDarkGreenColor,
+            inactiveColorPrimary: ColorConstant.kBlackColor,
+            inactiveIcon: SvgPicture.asset("assets/svg/bottomBarItem$i.svg",
+                height: 55, color: ColorConstant.kBlackColor),
+          ),
       ];
     }
 
@@ -92,17 +85,17 @@ class _MyAppState extends State<MyApp> {
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: const ItemAnimationProperties( // Navigation Bar's items animation properties.
+      itemAnimationProperties: const ItemAnimationProperties(
         duration: Duration(milliseconds: 500),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
+      screenTransitionAnimation: const ScreenTransitionAnimation(
         animateTabTransition: true,
         curve: Curves.ease,
         duration: Duration(milliseconds: 500),
       ),
       navBarStyle: NavBarStyle.style3,
-      onItemSelected: (index){},
+      onItemSelected: (index) {},
       backgroundColor: ColorConstant.kBackGroundColor,
     );
   }

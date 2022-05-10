@@ -1,11 +1,9 @@
 import 'dart:ui' as ui;
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_custom_tab_bar/library.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
@@ -42,7 +40,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     "Aloe Vera"
   ];
   final List<Color> plantBackColor = <Color>[
-    const Color(0xFFF9CE5CB),
+    const Color(0xFF9CE5CB),
     const Color(0xFFFFF1C2),
     const Color(0xFF56D1A7),
     const Color(0xFFB2E28D),
@@ -96,29 +94,25 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         expandedTitleScale: 2,
         title: BackdropFilter(
           filter: ui.ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-          child: Container(
-            // width: 100,
-            // color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 20, child: Image.asset(kLogo)),
-                const SizedBox(width: 10),
-                Text(
-                  'PLANTFY',
-                  style: TextStyle(
-                    color: ColorConstant.kBlackColor,
-                    shadows: <Shadow>[
-                      Shadow(
-                        offset: const Offset(0.2, 0.2),
-                        blurRadius: 10.0,
-                        color: ColorConstant.kWhiteColor,
-                      ),
-                    ],
-                  ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20, child: Image.asset(kLogo)),
+              const SizedBox(width: 10),
+              Text(
+                'PLANTFY',
+                style: TextStyle(
+                  color: ColorConstant.kBlackColor,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: const Offset(0.2, 0.2),
+                      blurRadius: 10.0,
+                      color: ColorConstant.kWhiteColor,
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         background: Image.asset(kAppbarBg, fit: BoxFit.fitWidth),
@@ -144,7 +138,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             _lottiesController.forward();
           },
           child: Lottie.asset(
-            kNotificationBell,
+            AnimationConstant.kNotificationBell,
             controller: _lottiesController,
             onLoaded: (composition) {
               // Configure the AnimationController with the duration of the
@@ -187,7 +181,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         child: GestureDetector(
                             child: Image.asset(i, fit: BoxFit.fill),
                             onTap: () {
-                              print("Clicked.....!");
+                              if (kDebugMode) {
+                                print("Clicked.....!");
+                              }
                             }));
                   },
                 );
@@ -273,7 +269,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   Stack plantCard(int index, int pageIndex) {
-    print("plant_"+pageIndex.toString()+index.toString());
+    if (kDebugMode) {
+      print("plant_"+pageIndex.toString()+index.toString());
+    }
     return Stack(
       children: [
         Padding(

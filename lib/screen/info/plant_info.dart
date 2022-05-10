@@ -512,7 +512,6 @@ class _PlantInfoState extends State<PlantInfo> with TickerProviderStateMixin {
 
   AnimatedPositioned potCircleList() {
     return AnimatedPositioned(
-        // height: 100.h,
         top: 80.0,
         right: _selected ? -75.w : -125.w,
         duration: _animationDuration,
@@ -528,14 +527,12 @@ class _PlantInfoState extends State<PlantInfo> with TickerProviderStateMixin {
                     },
                     child: SvgPicture.asset("assets/svg/img_side.svg")),
                 CircleList(
-                  // rotateMode: RotateMode.stopRotate,
-                  // innerCircleColor: Colors.redAccent,
-                  // isChildrenVertical: false,
                   outerCircleColor: ColorConstant.kDarkGreenColor,
+                  innerCircleColor: ColorConstant.kWhiteColor,
                   innerRadius: 20.h,
                   outerRadius: 30.h,
                   origin: const Offset(-8, 0),
-                  centerWidget: const Text("Asd"),
+                  centerWidget: const Text("Choose."),
                   onDragStart: (as) {
                     print(as);
                   },

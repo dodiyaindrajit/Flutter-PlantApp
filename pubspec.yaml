@@ -19,7 +19,7 @@ dependencies:
   responsive_sizer: ^3.0.5+1
 
   #Image-Slider / Image Providers
-  carousel_slider: ^4.0.0
+  carousel_slider: ^4.1.1
   flutter_svg: ^1.0.3
   flutter_custom_tab_bar: ^1.1.9
   simple_shadow: ^0.3.0
@@ -31,11 +31,16 @@ dependencies:
   circle_list: ^1.0.5
 
   #Bottom Bar
-  persistent_bottom_nav_bar_v2: ^4.1.9
+  persistent_bottom_nav_bar_v2: ^4.1.10
   #camara access
-  camera: ^0.9.4+19
-  video_player: ^2.3.0
+  camera: ^0.9.4+20
+  video_player: ^2.4.0
   path_provider: ^2.0.9
+
+  #Music
+  just_audio: ^0.9.20
+
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:
