@@ -1,6 +1,6 @@
 # plant_flutter
 
-Plantapp Is Made with ❤ at **KarmaLeen Technology** in flutter.
+Plantapp Is Made with ❤ in flutter.
 
 Images : 
 Home Page 1        |  Home Page 2 | Info Page 1 | Info Page 2
